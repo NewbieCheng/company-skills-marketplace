@@ -1,0 +1,33 @@
+{
+  "$schema": "./schemas/catalog.schema.json",
+  "schemaVersion": 1,
+  "publisher": "NewbieCheng Team",
+  "repository": "https://github.com/NewbieCheng/company-skills-marketplace",
+  "projects": [
+    {
+      "id": "jiujiang",
+      "displayName": "九江",
+      "description": "项目分类与命名示例；首版暂不包含虚构业务 Skill。"
+    },
+    {
+      "id": "social-media",
+      "displayName": "社媒",
+      "description": "公开趋势研究、内容策划与社交媒体工作流。"
+    }
+  ],
+  "packages": [
+    {
+      "id": "social-media-hotspot-brief",
+      "displayName": "社媒 · 公开热点简报",
+      "project": "social-media",
+      "version": "1.0.0",
+      "description": "研究当前公开热点，保留来源和公开指标，输出 Markdown 与结构化 JSON。",
+      "pluginPath": "plugins/social-media-hotspot-brief",
+      "skillPaths": [
+        "plugins/social-media-hotspot-brief/skills/hotspot-brief-public"
+      ],
+      "platforms": ["windows", "macos", "linux"],
+      "dependencies": []
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "公开热点简报"
+  short_description: "Research traceable public trends and content ideas"
+  default_prompt: "Use $hotspot-brief-public to research current public trends and create a traceable brief."

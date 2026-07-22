@@ -1,0 +1,27 @@
+{
+  "name": "social-media-hotspot-brief",
+  "version": "1.0.0",
+  "description": "Research current public trends and create traceable hotspot briefs without private services.",
+  "author": {
+    "name": "NewbieCheng Team",
+    "url": "https://github.com/NewbieCheng"
+  },
+  "homepage": "https://github.com/NewbieCheng/company-skills-marketplace#readme",
+  "repository": "https://github.com/NewbieCheng/company-skills-marketplace",
+  "license": "MIT",
+  "keywords": ["trends", "research", "social-media", "brief"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "社媒 · 公开热点简报",
+    "shortDescription": "研究公开热点并生成可追溯简报",
+    "longDescription": "从公开网页和搜索结果研究当前热点，保留来源、公开指标和失败原因，并输出 Markdown 与结构化 JSON。",
+    "developerName": "NewbieCheng Team",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/NewbieCheng/company-skills-marketplace",
+    "defaultPrompt": [
+      "研究今天与我的业务相关的公开热点，并生成带来源的简报。",
+      "根据我的关键词整理本周热点和可执行选题。"
+    ]
+  }
+}

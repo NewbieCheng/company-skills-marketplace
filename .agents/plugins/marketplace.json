@@ -1,0 +1,20 @@
+{
+  "name": "newbiecheng-team",
+  "interface": {
+    "displayName": "NewbieCheng Team Skills"
+  },
+  "plugins": [
+    {
+      "name": "social-media-hotspot-brief",
+      "source": {
+        "source": "local",
+        "path": "./plugins/social-media-hotspot-brief"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

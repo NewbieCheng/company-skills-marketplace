@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/NewbieCheng/company-skills-marketplace/raw/main/schemas/catalog.schema.json",
+  "title": "NewbieCheng Team Skills Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "publisher", "repository", "projects", "packages"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schemaVersion": {"const": 1},
+    "publisher": {"type": "string", "minLength": 1},
+    "repository": {"type": "string", "format": "uri"},
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "displayName", "description"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "displayName": {"type": "string", "minLength": 1},
+          "description": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "displayName", "project", "version", "description", "pluginPath", "skillPaths", "platforms", "dependencies"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "displayName": {"type": "string", "minLength": 1},
+          "project": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"},
+          "description": {"type": "string", "minLength": 1},
+          "pluginPath": {"type": "string", "pattern": "^plugins/[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "skillPaths": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "pattern": "^plugins/.+/skills/[a-z0-9]+(?:-[a-z0-9]+)*$"}
+          },
+          "platforms": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"enum": ["windows", "macos", "linux"]}
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/dependency"}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "commandMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "windows": {"type": "string", "minLength": 1},
+        "macos": {"type": "string", "minLength": 1},
+        "linux": {"type": "string", "minLength": 1}
+      },
+      "minProperties": 1
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "purpose", "required", "modifiesSystem", "detect", "install", "verify"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string", "minLength": 1},
+        "required": {"type": "boolean"},
+        "modifiesSystem": {"type": "boolean"},
+        "detect": {"$ref": "#/$defs/commandMap"},
+        "install": {"$ref": "#/$defs/commandMap"},
+        "verify": {"$ref": "#/$defs/commandMap"}
+      }
+    }
+  }
+}
