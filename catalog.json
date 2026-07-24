@@ -7,7 +7,7 @@
     {
       "id": "jiujiang",
       "displayName": "九江",
-      "description": "项目分类与命名示例；首版暂不包含虚构业务 Skill。"
+      "description": "九江双蒸私域项目——内容运营、私域转化与用户运营 Skill 集。"
     },
     {
       "id": "social-media",
@@ -25,6 +25,19 @@
       "pluginPath": "plugins/social-media-hotspot-brief",
       "skillPaths": [
         "plugins/social-media-hotspot-brief/skills/hotspot-brief-public"
+      ],
+      "platforms": ["windows", "macos", "linux"],
+      "dependencies": []
+    },
+    {
+      "id": "jiujiang-hangge-pengyouquan",
+      "displayName": "九江 · 航哥朋友圈内容运营",
+      "project": "jiujiang",
+      "version": "2.1.0",
+      "description": "为九江双蒸私域团队规划、撰写、改写和审核航哥朋友圈内容。把真实经营资料转成\"航哥本人会发\"的朋友圈，有经营目的、有事实依据、有专业标准和生活画面。",
+      "pluginPath": "plugins/jiujiang-hangge-pengyouquan",
+      "skillPaths": [
+        "plugins/jiujiang-hangge-pengyouquan/skills/hangge-peng-you-quan"
       ],
       "platforms": ["windows", "macos", "linux"],
       "dependencies": []

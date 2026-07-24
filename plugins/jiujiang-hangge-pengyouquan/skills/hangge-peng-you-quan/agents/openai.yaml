@@ -1,0 +1,4 @@
+interface:
+  display_name: "航哥朋友圈"
+  short_description: "根据真实经营资料规划、撰写并审核航哥私域朋友圈内容"
+  default_prompt: "使用 $hangge-peng-you-quan 根据本周真实经营资料生成航哥一周朋友圈并保存到分发库。"

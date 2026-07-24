@@ -1,0 +1,27 @@
+{
+  "name": "jiujiang-hangge-pengyouquan",
+  "version": "2.1.0",
+  "description": "为九江双蒸私域团队规划、撰写、改写和审核航哥朋友圈内容。",
+  "author": {
+    "name": "NewbieCheng Team",
+    "url": "https://github.com/NewbieCheng"
+  },
+  "homepage": "https://github.com/NewbieCheng/company-skills-marketplace#readme",
+  "repository": "https://github.com/NewbieCheng/company-skills-marketplace",
+  "license": "MIT",
+  "keywords": ["jiujiang", "moments", "content", "wechat", "private-domain"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "九江 · 航哥朋友圈内容运营",
+    "shortDescription": "规划、撰写、改写和审核航哥朋友圈内容",
+    "longDescription": "把真实经营资料转成\"航哥本人会发\"的朋友圈：有经营目的、有事实依据、有专业标准和生活画面，能自然承接私域动作。",
+    "developerName": "NewbieCheng Team",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "websiteURL": "https://github.com/NewbieCheng/company-skills-marketplace",
+    "defaultPrompt": [
+      "帮航哥规划本周朋友圈，每天3条共21条。",
+      "把这条泡酒素材写成航哥朋友圈。"
+    ]
+  }
+}
