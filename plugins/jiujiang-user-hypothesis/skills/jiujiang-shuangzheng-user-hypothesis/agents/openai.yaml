@@ -1,0 +1,4 @@
+interface:
+  display_name: "九江双蒸用户假设报告"
+  short_description: "建立、验证并修正九江双蒸产品用户假设，输出卖点卡输入"
+  default_prompt: "使用 $jiujiang-shuangzheng-user-hypothesis 为九江双蒸当前产品建立一版待验证用户假设报告。"

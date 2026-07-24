@@ -41,6 +41,19 @@
       ],
       "platforms": ["windows", "macos", "linux"],
       "dependencies": []
+    },
+    {
+      "id": "jiujiang-user-hypothesis",
+      "displayName": "九江 · 用户假设报告",
+      "project": "jiujiang",
+      "version": "2.0.0",
+      "description": "帮运营在正式卖货前，先判断\"谁最可能买、为什么买、为什么不买、先验证什么\"，避免一上来就凭感觉写卖点、做海报、推错人群。",
+      "pluginPath": "plugins/jiujiang-user-hypothesis",
+      "skillPaths": [
+        "plugins/jiujiang-user-hypothesis/skills/jiujiang-shuangzheng-user-hypothesis"
+      ],
+      "platforms": ["windows", "macos", "linux"],
+      "dependencies": []
     }
   ]
 }
