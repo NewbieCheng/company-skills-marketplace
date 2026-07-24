@@ -54,6 +54,19 @@
       ],
       "platforms": ["windows", "macos", "linux"],
       "dependencies": []
+    },
+    {
+      "id": "jiujiang-selling-point-card",
+      "displayName": "九江 · 产品卖点卡",
+      "project": "jiujiang",
+      "version": "2.2.0",
+      "description": "分析、提炼和梳理具体产品的卖点，输出\"先打什么卖点、对谁说、凭什么说、哪些能说、缺什么证据\"，帮运营在详情页和朋友圈之前先想清楚产品该卖什么。",
+      "pluginPath": "plugins/jiujiang-selling-point-card",
+      "skillPaths": [
+        "plugins/jiujiang-selling-point-card/skills/jiujiang-shuangzheng-product-selling-point-card"
+      ],
+      "platforms": ["windows", "macos", "linux"],
+      "dependencies": []
     }
   ]
 }

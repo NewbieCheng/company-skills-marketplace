@@ -1,0 +1,27 @@
+{
+  "name": "jiujiang-selling-point-card",
+  "version": "2.2.0",
+  "description": "分析、提炼和梳理具体产品的卖点，输出\"先打什么卖点、对谁说、凭什么说、哪些能说、缺什么证据\"，帮运营在详情页和朋友圈之前先想清楚产品该卖什么。",
+  "author": {
+    "name": "NewbieCheng Team",
+    "url": "https://github.com/NewbieCheng"
+  },
+  "homepage": "https://github.com/NewbieCheng/company-skills-marketplace#readme",
+  "repository": "https://github.com/NewbieCheng/company-skills-marketplace",
+  "license": "MIT",
+  "keywords": ["jiujiang", "selling-point", "product-card", "private-domain"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "九江 · 产品卖点卡",
+    "shortDescription": "分析、提炼和梳理具体产品的卖点，帮运营先想清楚产品该卖什么",
+    "longDescription": "用于分析、提炼和梳理具体产品的产品卖点，并生成或迭代\"产品卖点分析报告\"。输出先打什么卖点、对谁说、凭什么说、哪些能说、缺什么证据以及执行后如何迭代。",
+    "developerName": "NewbieCheng Team",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/NewbieCheng/company-skills-marketplace",
+    "defaultPrompt": [
+      "分析这个产品的卖点，生成产品卖点分析报告。",
+      "帮梳理吉林双阳中段鲜鹿茸这个产品的卖点。"
+    ]
+  }
+}

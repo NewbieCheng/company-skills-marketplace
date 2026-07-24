@@ -1,0 +1,4 @@
+interface:
+  display_name: "九江双蒸产品卖点分析报告"
+  short_description: "分析任意具体产品的卖点，并基于最新旧版持续迭代报告"
+  default_prompt: "使用 $jiujiang-shuangzheng-product-selling-point-card 分析指定产品的产品卖点；先查找同产品最新旧版，有则迭代，无则首次生成报告。"
