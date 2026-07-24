@@ -1,0 +1,28 @@
+{
+  "name": "social-media-hangge-moments",
+  "version": "1.0.0",
+  "description": "Install and use the device-licensed Hangge Moments Skill without shipping its protected core as plaintext files.",
+  "author": {
+    "name": "NewbieCheng Team",
+    "url": "https://github.com/NewbieCheng"
+  },
+  "homepage": "https://github.com/NewbieCheng/company-skills-marketplace/blob/main/docs/LICENSED_SKILL_GUIDE.md",
+  "repository": "https://github.com/NewbieCheng/company-skills-marketplace",
+  "license": "Proprietary",
+  "keywords": ["licensed-skill", "offline-activation", "social-media", "moments"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "社媒 · 航哥朋友圈（授权版）",
+    "shortDescription": "离线设备授权后创作、改写并审核航哥朋友圈",
+    "longDescription": "通过本地运行器校验客户设备和专属激活码，在内存中解密核心规则，并在 Codex 或 Cursor 中完成航哥朋友圈的周计划、单条创作和审核。",
+    "developerName": "NewbieCheng Team",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/NewbieCheng/company-skills-marketplace",
+    "defaultPrompt": [
+      "激活航哥朋友圈，并告诉我下一步怎么做。",
+      "使用航哥朋友圈规划下周每天三条内容。",
+      "使用航哥朋友圈审核并改写这段文案。"
+    ]
+  }
+}

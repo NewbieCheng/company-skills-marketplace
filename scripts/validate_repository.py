@@ -21,6 +21,9 @@ TEXT_SUFFIXES = {
     ".json",
     ".md",
     ".py",
+    ".ps1",
+    ".sh",
+    ".svg",
     ".toml",
     ".txt",
     ".yaml",
@@ -158,6 +161,84 @@ class Validator:
             if any(not isinstance(command, str) or not command.strip() for command in commands.values()):
                 self.error(f"dependency {phase} has empty command: {package_id}")
 
+    def validate_delivery(
+        self, package_id: str, delivery: Any, platforms: set[str]
+    ) -> None:
+        if not isinstance(delivery, dict):
+            self.error(f"delivery must be an object: {package_id}")
+            return
+        required = {
+            "type",
+            "releaseTag",
+            "assetName",
+            "assetUrl",
+            "sha256",
+            "installerPaths",
+            "activation",
+        }
+        if set(delivery) != required:
+            self.error(f"delivery fields invalid: {package_id}")
+            return
+        if delivery.get("type") != "licensed-github-release":
+            self.error(f"unsupported delivery type: {package_id}")
+        asset_name = delivery.get("assetName", "")
+        asset_url = delivery.get("assetUrl", "")
+        release_tag = delivery.get("releaseTag", "")
+        expected_url = (
+            "https://github.com/NewbieCheng/company-skills-marketplace/releases/"
+            f"download/{release_tag}/{asset_name}"
+        )
+        if asset_url != expected_url:
+            self.error(f"licensed release URL mismatch: {package_id}")
+        sha256 = delivery.get("sha256", "")
+        if not isinstance(sha256, str) or not re.fullmatch(r"[A-Fa-f0-9]{64}", sha256):
+            self.error(f"invalid licensed release SHA-256: {package_id}")
+
+        installer_paths = delivery.get("installerPaths")
+        if not isinstance(installer_paths, dict):
+            self.error(f"installerPaths must be an object: {package_id}")
+        else:
+            if set(installer_paths) != platforms:
+                self.error(
+                    f"installerPaths must match platforms: {package_id}"
+                )
+            for platform, relative in installer_paths.items():
+                if platform not in PLATFORMS:
+                    self.error(f"unsupported installer platform: {package_id}/{platform}")
+                    continue
+                if (
+                    not isinstance(relative, str)
+                    or Path(relative).is_absolute()
+                    or ".." in Path(relative).parts
+                    or not (self.root / relative).is_file()
+                ):
+                    self.error(f"missing or unsafe installer path: {package_id}/{relative}")
+
+        activation = delivery.get("activation")
+        activation_fields = {
+            "productId",
+            "licenseMajor",
+            "binding",
+            "requestCodePrefix",
+            "activationCodePrefix",
+            "promptAfterInstall",
+            "activationStoredLocally",
+            "reusableOnAnotherDevice",
+        }
+        if not isinstance(activation, dict) or set(activation) != activation_fields:
+            self.error(f"activation fields invalid: {package_id}")
+            return
+        if activation.get("binding") != "device":
+            self.error(f"activation must use device binding: {package_id}")
+        if activation.get("activationStoredLocally") is not True:
+            self.error(f"activation must be stored locally: {package_id}")
+        if activation.get("reusableOnAnotherDevice") is not False:
+            self.error(f"activation must reject another device: {package_id}")
+        for field in ("requestCodePrefix", "activationCodePrefix"):
+            value = activation.get(field, "")
+            if not isinstance(value, str) or not re.fullmatch(r"[A-Z0-9]+-", value):
+                self.error(f"invalid {field}: {package_id}")
+
     def validate(self) -> list[str]:
         self.validate_text_and_secrets()
         catalog = self.load_json("catalog.json")
@@ -239,7 +320,8 @@ class Validator:
                 "platforms",
                 "dependencies",
             }
-            if set(package) != required_fields:
+            allowed_fields = required_fields | {"delivery"}
+            if not required_fields <= set(package) or not set(package) <= allowed_fields:
                 self.error(f"package fields invalid: {package.get('id')}")
             package_id = package.get("id", "")
             project_id = package.get("project", "")
@@ -296,6 +378,8 @@ class Validator:
                 dependencies = []
             for dependency in dependencies:
                 self.validate_dependency(package_id, dependency, platforms)
+            if "delivery" in package:
+                self.validate_delivery(package_id, package["delivery"], platforms)
 
             entry = marketplace_by_name.get(package_id)
             if entry is None:

@@ -1,0 +1,10 @@
+interface:
+  display_name: "航哥朋友圈（授权版）"
+  short_description: "Activate once, then create and review Hangge Moments content"
+  default_prompt: "Use $hangge-peng-you-quan-licensed to check activation and complete my Moments content task."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "hanggeLicensedSkill"
+      description: "Local offline license check, in-memory decryption, and protected workflow service"

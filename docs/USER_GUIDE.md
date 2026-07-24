@@ -16,6 +16,28 @@
 
 公开仓库会被直接下载。GitHub 内部可能使用压缩传输，但下载、展开和放置目录都由 Codex 完成，用户不需要操作压缩包。
 
+## 安装需要公司激活码的 Skill
+
+航哥朋友圈授权版使用下面这一句话：
+
+> 请从 https://github.com/NewbieCheng/company-skills-marketplace 安装 `social-media-hangge-moments`。按 catalog.json 下载并校验对应的 GitHub Release，在我的 Windows 或 macOS 上自动安装薄 Skill 和本地运行器；不要让我安装 Git、手工解压或手工打开 EXE。安装完成后返回航哥朋友圈的 HGD1 设备请求码。
+
+安装完成后：
+
+1. 把 Codex 返回的完整 `HGD1-` 设备请求码发给公司。
+2. 收到公司发来的 `HGL1-` 激活码。
+3. 对 Codex 或 Cursor 说：
+
+   > 激活航哥朋友圈，激活码：HGL1-这里粘贴完整激活码
+
+4. 激活成功后新开任务，直接说：
+
+   > 使用 `$hangge-peng-you-quan-licensed`，帮我规划下周每天三条朋友圈。
+
+激活码只输入一次。它会保存在当前电脑的用户目录中，以后每次调用由本地运行器自动检查。另一位客户或另一台电脑不能复用这个激活码。
+
+原理图、换机方式和一期保护边界见[授权版 Skill 小白指南](LICENSED_SKILL_GUIDE.md)。
+
 ## Windows 和 macOS
 
 - Windows 默认安装位置通常是 `%USERPROFILE%\.codex\skills\<skill-name>`。
@@ -64,3 +86,11 @@ Codex 会根据 `catalog.json` 运行检测命令，汇总需要安装的组件�
 ### 公司私有包
 
 本仓库是公开仓库，不需要 GitHub 登录。未来如果某个包迁移到私有仓库，用户必须先完成 GitHub 身份认证，否则无法下载。
+
+### 激活码能不能发给别人
+
+不能。公开安装包可以是同一个，但 `HGL1-` 激活码由每台电脑自己的 `HGD1-` 请求码生成。复制到另一台电脑会返回 `DEVICE_MISMATCH`。
+
+### 每次使用都要输入激活码吗
+
+不用。第一次激活成功后，本机保存授权；以后每次调用只在后台自动验证。

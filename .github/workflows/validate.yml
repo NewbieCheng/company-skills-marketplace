@@ -50,8 +50,12 @@ jobs:
           python-version: "3.12"
 
       - name: Download public archive without Git
-        run: >-
-          python scripts/test_public_download.py
-          --repo NewbieCheng/company-skills-marketplace
-          --ref ${{ github.sha }}
-          --skill-path plugins/social-media-hotspot-brief/skills/hotspot-brief-public
+        run: |
+          python scripts/test_public_download.py \
+            --repo NewbieCheng/company-skills-marketplace \
+            --ref ${{ github.sha }} \
+            --skill-path plugins/social-media-hotspot-brief/skills/hotspot-brief-public
+          python scripts/test_public_download.py \
+            --repo NewbieCheng/company-skills-marketplace \
+            --ref ${{ github.sha }} \
+            --skill-path plugins/social-media-hangge-moments/skills/hangge-peng-you-quan-licensed

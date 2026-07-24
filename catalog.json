@@ -80,6 +80,40 @@
       ],
       "platforms": ["windows", "macos", "linux"],
       "dependencies": []
+    },
+    {
+      "id": "social-media-hangge-moments",
+      "displayName": "社媒 · 航哥朋友圈（授权版）",
+      "project": "social-media",
+      "version": "1.0.0",
+      "description": "用户从 GitHub 一句话安装；首次返回设备请求码，由公司签发本机专属激活码，之后在 Codex 或 Cursor 中直接调用。",
+      "pluginPath": "plugins/social-media-hangge-moments",
+      "skillPaths": [
+        "plugins/social-media-hangge-moments/skills/hangge-peng-you-quan-licensed"
+      ],
+      "platforms": ["windows", "macos"],
+      "dependencies": [],
+      "delivery": {
+        "type": "licensed-github-release",
+        "releaseTag": "social-media-hangge-moments-v1.0.0",
+        "assetName": "hangge-moments-universal-v1.0.0.zip",
+        "assetUrl": "https://github.com/NewbieCheng/company-skills-marketplace/releases/download/social-media-hangge-moments-v1.0.0/hangge-moments-universal-v1.0.0.zip",
+        "sha256": "BB3E1D97CE315C65520406C795E829CBF6C15176630DAFE3FF7888E41C4D297A",
+        "installerPaths": {
+          "windows": "scripts/install_hangge_release.ps1",
+          "macos": "scripts/install_hangge_release.sh"
+        },
+        "activation": {
+          "productId": "hangge-peng-you-quan",
+          "licenseMajor": 1,
+          "binding": "device",
+          "requestCodePrefix": "HGD1-",
+          "activationCodePrefix": "HGL1-",
+          "promptAfterInstall": "激活航哥朋友圈",
+          "activationStoredLocally": true,
+          "reusableOnAnotherDevice": false
+        }
+      }
     }
   ]
 }

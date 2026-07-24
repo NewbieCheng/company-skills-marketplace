@@ -51,7 +51,8 @@
           "dependencies": {
             "type": "array",
             "items": {"$ref": "#/$defs/dependency"}
-          }
+          },
+          "delivery": {"$ref": "#/$defs/delivery"}
         }
       }
     }
@@ -79,6 +80,51 @@
         "detect": {"$ref": "#/$defs/commandMap"},
         "install": {"$ref": "#/$defs/commandMap"},
         "verify": {"$ref": "#/$defs/commandMap"}
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "releaseTag",
+        "assetName",
+        "assetUrl",
+        "sha256",
+        "installerPaths",
+        "activation"
+      ],
+      "properties": {
+        "type": {"const": "licensed-github-release"},
+        "releaseTag": {"type": "string", "minLength": 1},
+        "assetName": {"type": "string", "pattern": "^[A-Za-z0-9._-]+\\.zip$"},
+        "assetUrl": {"type": "string", "format": "uri"},
+        "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+        "installerPaths": {"$ref": "#/$defs/commandMap"},
+        "activation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "productId",
+            "licenseMajor",
+            "binding",
+            "requestCodePrefix",
+            "activationCodePrefix",
+            "promptAfterInstall",
+            "activationStoredLocally",
+            "reusableOnAnotherDevice"
+          ],
+          "properties": {
+            "productId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+            "licenseMajor": {"type": "integer", "minimum": 1},
+            "binding": {"const": "device"},
+            "requestCodePrefix": {"type": "string", "pattern": "^[A-Z0-9]+-$"},
+            "activationCodePrefix": {"type": "string", "pattern": "^[A-Z0-9]+-$"},
+            "promptAfterInstall": {"type": "string", "minLength": 1},
+            "activationStoredLocally": {"const": true},
+            "reusableOnAnotherDevice": {"const": false}
+          }
+        }
       }
     }
   }

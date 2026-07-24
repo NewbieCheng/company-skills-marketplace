@@ -96,6 +96,42 @@ class RepositoryValidationTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("possible GitHub token", result.stdout)
 
+    def test_licensed_activation_must_reject_another_device(self) -> None:
+        temporary, root = self.make_copy()
+        self.addCleanup(temporary.cleanup)
+        catalog_path = root / "catalog.json"
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        licensed = next(
+            package
+            for package in catalog["packages"]
+            if package["id"] == "social-media-hangge-moments"
+        )
+        licensed["delivery"]["activation"]["reusableOnAnotherDevice"] = True
+        catalog_path.write_text(
+            json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        result = self.run_validator(root)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("must reject another device", result.stdout)
+
+    def test_licensed_installer_path_must_exist(self) -> None:
+        temporary, root = self.make_copy()
+        self.addCleanup(temporary.cleanup)
+        catalog_path = root / "catalog.json"
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        licensed = next(
+            package
+            for package in catalog["packages"]
+            if package["id"] == "social-media-hangge-moments"
+        )
+        licensed["delivery"]["installerPaths"]["windows"] = "scripts/missing.ps1"
+        catalog_path.write_text(
+            json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        result = self.run_validator(root)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("missing or unsafe installer path", result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()
