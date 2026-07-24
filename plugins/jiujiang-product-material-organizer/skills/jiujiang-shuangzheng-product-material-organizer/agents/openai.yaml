@@ -1,0 +1,6 @@
+interface:
+  display_name: "九江产品素材整理"
+  short_description: "按文件类型和产品整理素材入库"
+  default_prompt: "Use $jiujiang-shuangzheng-product-material-organizer to inspect a product material zip or folder and prepare a high-confidence Obsidian import plan."
+policy:
+  allow_implicit_invocation: true

@@ -67,6 +67,19 @@
       ],
       "platforms": ["windows", "macos", "linux"],
       "dependencies": []
+    },
+    {
+      "id": "jiujiang-product-material-organizer",
+      "displayName": "九江 · 产品素材整理入库",
+      "project": "jiujiang",
+      "version": "1.0.0",
+      "description": "把客户提供的产品素材按图片/视频/文档分类，自动判断产品归属和图片场景，生成入库预案后经确认归档到 Obsidian 产品素材库。",
+      "pluginPath": "plugins/jiujiang-product-material-organizer",
+      "skillPaths": [
+        "plugins/jiujiang-product-material-organizer/skills/jiujiang-shuangzheng-product-material-organizer"
+      ],
+      "platforms": ["windows", "macos", "linux"],
+      "dependencies": []
     }
   ]
 }

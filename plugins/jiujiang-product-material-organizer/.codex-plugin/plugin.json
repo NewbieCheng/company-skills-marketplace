@@ -1,0 +1,28 @@
+{
+  "name": "jiujiang-product-material-organizer",
+  "version": "1.0.0",
+  "description": "九江双蒸产品素材自动分类归档到 Obsidian 素材库。",
+  "author": {
+    "name": "NewbieCheng Team",
+    "url": "https://github.com/NewbieCheng"
+  },
+  "homepage": "https://github.com/NewbieCheng/company-skills-marketplace#readme",
+  "repository": "https://github.com/NewbieCheng/company-skills-marketplace",
+  "license": "MIT",
+  "keywords": ["jiujiang", "product", "material", "organizer", "obsidian"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "产品素材整理入库",
+    "shortDescription": "九江双蒸产品素材自动分类归档到 Obsidian 素材库",
+    "longDescription": "把客户提供的产品素材文件夹或 zip 压缩包按图片/视频/文档分类，自动判断产品归属和图片场景（产品实拍/好评截图/用户晒单/用户咨询），生成入库预案后经人工确认复制到 Obsidian 产品素材库，并维护统一入库总表。",
+    "developerName": "NewbieCheng Team",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/NewbieCheng/company-skills-marketplace",
+    "defaultPrompt": [
+      "整理产品素材包到九江双蒸素材库",
+      "把这个素材文件夹按类型和产品分类入库",
+      "导入产品素材到 01.4_产品素材库"
+    ]
+  }
+}
